@@ -12,6 +12,19 @@ namespace ciberstyleAPI.Controllers
     {
         private ciberstyleEntities db = new ciberstyleEntities();
 
+        // GET: api/Reclamo/Consulta/5
+        public HttpResponseMessage GetConsulta(int id)
+        {
+            var result = db.Reclamos.Where(x => x.idpago == id).ToList();
+
+            if (result.Count > 0)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.NotFound, "Reclamo no registrado");
+        }
+
         // GET: api/Reclamo/5
         public HttpResponseMessage Get(string id)
         {
