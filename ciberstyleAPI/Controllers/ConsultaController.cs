@@ -15,7 +15,7 @@ namespace ciberstyleAPI.Controllers
 
         public HttpResponseMessage Get(int id)
         {
-
+            Resultado result = new Resultado();
             var compras = db.compradetalle(id).ToList();
             if (compras.Count > 0)
             {
@@ -29,8 +29,8 @@ namespace ciberstyleAPI.Controllers
                     prendas += "*Producto: " + item.nombre + " ,cantidad: " + item.cantidad + " ,subtotal: S/. " + item.subtotal + ".* ";
                 }
                 salida = salida + prendas + totalT;
-
-                return Request.CreateResponse(HttpStatusCode.OK, salida);
+                result.resultado = salida;
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             return Request.CreateResponse(HttpStatusCode.NotFound, "El pedido no fue encontrado");
         }
