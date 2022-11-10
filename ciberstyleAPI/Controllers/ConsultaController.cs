@@ -27,7 +27,7 @@ namespace ciberstyleAPI.Controllers
                 foreach (var item in compras as List<compradetalle_Result>)
                 {
                     totalT = "Total: S/. "+item.total;
-                    prendas += "*Producto: " + item.nombre + " ,cantidad: " + item.cantidad + " ,subtotal: S/. " + item.subtotal + ".* ";
+                    prendas += "*Producto: " + item.nombre + " ,cantidad: " + item.cantidad + " ,subtotal: S/. " + item.subtotal + ".*\n ";
                 }
                 salida = salida + prendas + totalT;
                 result.resultado = salida;
