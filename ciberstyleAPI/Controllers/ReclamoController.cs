@@ -33,7 +33,7 @@ namespace ciberstyleAPI.Controllers
         [HttpGet]
         [ActionName("Idreclamo")]
         // GET: api/Reclamo/5
-        public HttpResponseMessage Get(string id)
+        public HttpResponseMessage GetReclamo(string id)
         {
             var result = db.Reclamos.Where(x => x.idreclamo == id).ToList();
 
