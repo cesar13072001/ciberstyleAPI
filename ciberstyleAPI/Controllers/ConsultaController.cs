@@ -12,7 +12,8 @@ namespace ciberstyleAPI.Controllers
     {
         private ciberstyleEntities db = new ciberstyleEntities();
 
-
+        [HttpGet]
+        [ActionName("Idpedido")]
         public HttpResponseMessage Get(int id)
         {
             Resultado result = new Resultado();

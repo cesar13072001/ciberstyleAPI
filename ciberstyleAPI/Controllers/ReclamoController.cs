@@ -13,6 +13,10 @@ namespace ciberstyleAPI.Controllers
         private ciberstyleEntities db = new ciberstyleEntities();
 
         // GET: api/Reclamo/Consulta/5
+
+
+        [HttpGet]
+        [ActionName("Idpago")]
         public HttpResponseMessage GetConsulta(int id)
         {
             var result = db.Reclamos.Where(x => x.idpago == id).ToList();
@@ -25,6 +29,9 @@ namespace ciberstyleAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.NotFound, "Reclamo no registrado");
         }
 
+
+        [HttpGet]
+        [ActionName("Idreclamo")]
         // GET: api/Reclamo/5
         public HttpResponseMessage Get(string id)
         {
@@ -38,6 +45,8 @@ namespace ciberstyleAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.NotFound, "Reclamo no encontrado");
         }
 
+        [HttpPost]
+        [ActionName("Agregar")]
         // POST: api/Reclamo
         public HttpResponseMessage Post([FromBody] Reclamos reclamo)
         {
