@@ -36,10 +36,20 @@ namespace ciberstyleAPI.Controllers
         public HttpResponseMessage GetReclamo(string id)
         {
             var result = db.Reclamos.Where(x => x.idreclamo == id).ToList();
-
+            Reclamos reclamos = new Reclamos();
             if (result.Count > 0)
             {
-                return Request.CreateResponse(HttpStatusCode.OK, result);
+                foreach (var item in result as List<Reclamos>)
+                {
+                    reclamos.idreclamo = item.idreclamo;
+                    reclamos.idpago = item.idpago;
+                    reclamos.telefono = item.telefono;
+                    reclamos.descripcion = item.descripcion;
+                    reclamos.estado = item.estado;
+                    reclamos.fecha = item.fecha;
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, reclamos);
             }
 
             return Request.CreateResponse(HttpStatusCode.NotFound, "Reclamo no encontrado");
