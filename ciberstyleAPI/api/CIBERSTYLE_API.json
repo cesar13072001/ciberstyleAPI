@@ -1,0 +1,182 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "CiberStyle API - Proyecto PI -T6HJ",
+    "description": "Esta API sera usado para que pueda sewr consumido con IB, Watson Assistant.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://ciberstyleapi.azurewebsites.net/api"
+    }
+  ],
+  "paths": {
+    "/Consulta/Idpedido/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operacion exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Resultado"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/Reclamo/Idpago/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operacion exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Reclamo"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/Reclamo/Idreclamo/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operacion exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Reclamo"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/Reclamo/Agregar": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Operacion exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Reclamo"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reclamo"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Reclamo": {
+        "type": "object",
+        "properties": {
+          "idreclamo": {
+            "type": "string",
+            "description": "id del reclamo",
+            "example": "962698439-100"
+          },
+          "idpago": {
+            "type": "number",
+            "description": "id del pedido",
+            "example": 1
+          },
+          "telefono": {
+            "type": "string",
+            "description": "Numero de telefono",
+            "example": "962698439"
+          },
+          "descripcion": {
+            "type": "string",
+            "description": "Descripcion del reclamo",
+            "example": "No me llego una prenda"
+          },
+          "estado": {
+            "type": "string",
+            "description": "Estado del reclamo",
+            "example": "Recibido"
+          },
+          "fecha": {
+            "type": "string",
+            "description": "Fecha del reclamo",
+            "example": "13/07/01"
+          }
+        }
+      },
+      "Resultado": {
+        "type": "object",
+        "properties": {
+          "resultado": {
+            "type": "string",
+            "description": "resultado",
+            "example": "Su compra fue ***"
+          }
+        }
+      }
+    }
+  }
+}
